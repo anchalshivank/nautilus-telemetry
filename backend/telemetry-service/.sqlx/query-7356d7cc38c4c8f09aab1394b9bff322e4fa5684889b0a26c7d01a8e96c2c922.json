@@ -1,0 +1,61 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            INSERT INTO vessel_register_table (vessel_id, vessel_name, correlation_id, trace_id)\n            VALUES ($1, $2, $3, $4)\n            RETURNING vessel_id, vessel_name, is_active as \"is_active!\", created_at as \"created_at!\", updated_at as \"updated_at!\", correlation_id, trace_id\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "vessel_id",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "vessel_name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "is_active!",
+        "type_info": "Bool"
+      },
+      {
+        "ordinal": 3,
+        "name": "created_at!",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 4,
+        "name": "updated_at!",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 5,
+        "name": "correlation_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 6,
+        "name": "trace_id",
+        "type_info": "Varchar"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Varchar",
+        "Varchar",
+        "Uuid",
+        "Varchar"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "7356d7cc38c4c8f09aab1394b9bff322e4fa5684889b0a26c7d01a8e96c2c922"
+}

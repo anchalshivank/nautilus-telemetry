@@ -1,0 +1,22 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT COUNT(*) as count\n            FROM server_metrics\n            WHERE metric_type = 'request_volume'\n              AND timestamp > NOW() - INTERVAL '1 minute' * $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "count",
+        "type_info": "Int8"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Float8"
+      ]
+    },
+    "nullable": [
+      null
+    ]
+  },
+  "hash": "707f4eed74d13bfedbfb5eb1218f914473e946808060fb68cf686627bf461484"
+}

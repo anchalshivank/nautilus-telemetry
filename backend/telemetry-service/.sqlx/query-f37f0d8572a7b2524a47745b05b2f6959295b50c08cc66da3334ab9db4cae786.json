@@ -1,0 +1,58 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT\n                vessel_id,\n                COUNT(CASE WHEN metric_type = 'request_volume' THEN 1 END) as request_volume,\n                AVG(CASE WHEN metric_type = 'latency_validation' THEN metric_value END) as avg_validation,\n                AVG(CASE WHEN metric_type = 'latency_ingestion' THEN metric_value END) as avg_ingestion,\n                AVG(CASE WHEN metric_type = 'latency_total' THEN metric_value END) as avg_total,\n                PERCENTILE_CONT(0.95) WITHIN GROUP (ORDER BY metric_value)\n                    FILTER (WHERE metric_type = 'latency_total') as p95_total,\n                PERCENTILE_CONT(0.99) WITHIN GROUP (ORDER BY metric_value)\n                    FILTER (WHERE metric_type = 'latency_total') as p99_total\n            FROM server_metrics\n            WHERE timestamp > NOW() - INTERVAL '1 hour' * $1\n              AND vessel_id IS NOT NULL\n            GROUP BY vessel_id\n            ORDER BY request_volume DESC\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "vessel_id",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "request_volume",
+        "type_info": "Int8"
+      },
+      {
+        "ordinal": 2,
+        "name": "avg_validation",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 3,
+        "name": "avg_ingestion",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 4,
+        "name": "avg_total",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 5,
+        "name": "p95_total",
+        "type_info": "Float8"
+      },
+      {
+        "ordinal": 6,
+        "name": "p99_total",
+        "type_info": "Float8"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Float8"
+      ]
+    },
+    "nullable": [
+      true,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "hash": "f37f0d8572a7b2524a47745b05b2f6959295b50c08cc66da3334ab9db4cae786"
+}

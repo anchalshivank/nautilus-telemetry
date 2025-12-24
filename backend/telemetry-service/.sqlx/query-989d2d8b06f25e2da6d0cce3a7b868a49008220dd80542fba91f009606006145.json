@@ -1,0 +1,34 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                    SELECT metric_type, metric_value, timestamp\n                    FROM server_metrics\n                    WHERE timestamp > NOW() - INTERVAL '1 hour' * $1\n                    ORDER BY timestamp DESC\n                    ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "metric_type",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "metric_value",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 2,
+        "name": "timestamp",
+        "type_info": "Timestamptz"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Float8"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "989d2d8b06f25e2da6d0cce3a7b868a49008220dd80542fba91f009606006145"
+}

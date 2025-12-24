@@ -1,0 +1,58 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT vessel_id, vessel_name, is_active as \"is_active!\", created_at as \"created_at!\", updated_at as \"updated_at!\", correlation_id, trace_id\n            FROM vessel_register_table\n            WHERE vessel_id = $1 AND is_active = TRUE\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "vessel_id",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "vessel_name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "is_active!",
+        "type_info": "Bool"
+      },
+      {
+        "ordinal": 3,
+        "name": "created_at!",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 4,
+        "name": "updated_at!",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 5,
+        "name": "correlation_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 6,
+        "name": "trace_id",
+        "type_info": "Varchar"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "287270bb7dbb874120fddf96eef76e35946e8e1ad7a7d59f82b0a828eacbcfa7"
+}

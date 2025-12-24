@@ -1,0 +1,21 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                INSERT INTO telemetry_filtered (vessel_id, timestamp_utc, epoch_utc, signal_name, signal_value, reason, correlation_id, trace_id)\n                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)\n                ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Varchar",
+        "Timestamptz",
+        "Int8",
+        "Varchar",
+        "Numeric",
+        "Varchar",
+        "Uuid",
+        "Varchar"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "386f4cebbbe3a09ac305681ad910537c539032a41b3bc25b1b027283ef16c4e7"
+}

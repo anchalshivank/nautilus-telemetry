@@ -1,0 +1,14 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            UPDATE vessel_register_table\n            SET is_active = FALSE, updated_at = NOW()\n            WHERE vessel_id = $1\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "5271d7bf51463e161dcdd2306e10601172a9d9b277b4f5e13fe541306f5094cd"
+}
